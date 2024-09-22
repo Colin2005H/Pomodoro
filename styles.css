@@ -1,0 +1,54 @@
+body {
+    font-family: "Julius Sans One", sans-serif;
+    font-weight: 400;
+    font-style: bold;
+    text-align: center;
+    font-size: 4em;
+    color: white;
+    background-color: black;
+    animation: fadein 1.5s ease-in-out;
+
+  }
+
+  input[type="number"] {
+    width: 2em; 
+    height: 1em; 
+    font-size: 1.5em; 
+    margin: 10px; 
+    padding: 0.1em;
+    text-align: center; 
+    border: 2px solid white; 
+    background-color: black; 
+    color: white; 
+    border-radius: 0.2em; 
+    font-family: "Julius Sans One", sans-serif;
+}
+
+
+button {
+    font-size: 0.7em;
+    color: white;
+    background-color: black; 
+    border: 2px solid white;
+    border-radius: 0.1em; 
+    cursor: pointer; 
+    margin: 1em; 
+    padding: 0.2em;
+    font-family: "Julius Sans One", sans-serif;
+}
+
+button:hover {
+    background-color: white; /* Fond blanc quand on survole */
+    color: black; /* Texte noir quand on survole */
+}
+
+@keyframes fadein {
+    0% {
+      opacity: 0;   
+    }
+    100% {
+      opacity: 1;  
+    }
+  }
+
+
