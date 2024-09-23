@@ -3,7 +3,7 @@ body {
     font-weight: 400;
     font-style: bold;
     text-align: center;
-    font-size: 4em;
+    font-size: 5vw;
     color: white;
     background-color: black;
     animation: fadein 1.5s ease-in-out;
@@ -11,11 +11,11 @@ body {
   }
 
   input[type="number"] {
-    width: 2em; 
+    max-width: 10vw; 
     height: 1em; 
-    font-size: 1.5em; 
-    margin: 10px; 
-    padding: 0.1em;
+    font-size: 5vw;
+    margin: 2vw; 
+    padding: 1.5vw;
     text-align: center; 
     border: 2px solid white; 
     background-color: black; 
@@ -26,20 +26,24 @@ body {
 
 
 button {
-    font-size: 0.7em;
+    font-size: 3vw;
     color: white;
     background-color: black; 
     border: 2px solid white;
     border-radius: 0.1em; 
     cursor: pointer; 
-    margin: 1em; 
-    padding: 0.2em;
+    margin: 2vw; 
+    padding: 1.5vw;
     font-family: "Julius Sans One", sans-serif;
 }
 
 button:hover {
     background-color: white; /* Fond blanc quand on survole */
     color: black; /* Texte noir quand on survole */
+}
+
+.timer {
+    
 }
 
 @keyframes fadein {
