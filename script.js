@@ -16,12 +16,16 @@ document.addEventListener('DOMContentLoaded', function() {
     startButton.addEventListener('click', function() {
         if (isPaused) {
             // Recuperrer les valeurs
+            
             let minutesInput = parseInt(document.getElementById('minutes').value) ||0;
             let secondsInput = parseInt(document.getElementById('secondes').value) || 0;
 
             // Pour le premier demmarage
             if (!totalSecondes) {
                 totalSecondes = (minutesInput * 60) + secondsInput;
+                if(totalSecondes == 0){
+                    totalSecondes = (25 * 60); // 25min par défaut
+                }
             }
 
             // Afficher la durée
@@ -34,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     timerDisplay.textContent = "Temps écoulé !";
                     startButton.textContent = "Démarrer"; 
                     totalSecondes = null; // Réinitialiser le temps restant
+                    
                 } else {
                     totalSecondes--;
 
