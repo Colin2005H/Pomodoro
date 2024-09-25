@@ -16,8 +16,13 @@ body {
 
 h1 {
     font-size: 4vw;
-    margin-top: 1vw;
 }
+
+#title.highlight {
+    animation: highlight 2s ease-in-out;
+}
+
+
 
 h2 {
     width: 25vw; 
@@ -48,6 +53,7 @@ h2 {
     justify-content: center;
     align-items: center;
     gap: 3vw; 
+    margin-top: 2vw;
 }
 
 input[type="number"] {
@@ -99,6 +105,18 @@ button:hover, input[type="number"]:hover {
     100% {
         background-color: rgb(199, 1, 26);
         color: white;
+    }
+}
+
+@keyframes highlight {
+    0% {
+        font-size: 4vw;
+    }
+    50% {
+        font-size: 6vw;
+    }
+    100% {
+        font-size: 4vw;
     }
 }
 

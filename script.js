@@ -1,11 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     let timerDisplay = document.getElementById('timer');
+    let titleDisplay = document.getElementById('title');
     let startButton = document.getElementById('startButton');
     let clearButton = document.getElementById('clearButton');
     let countdown; 
     let totalSecondes; // Temps restant pour le minuteur principal
     let isPaused = true; // Marche ou pause
     let audio = new Audio(".mp3");
+    
 
     // Fonction pour un affichage clair
     function formatTime(minutes, secondes) {
@@ -14,6 +16,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Fonction pour démarrer le timer de pause
     function timerPause() {
+        titleDisplay.textContent = "Pause";
+        titleDisplay.classList.add('highlight');
+        setTimeout(function() {
+            titleDisplay.classList.remove('highlight');
+        }, 2000); // 2000 ms 
         totalSecondes = 5 * 60; // 5 minutes de pause
         timerDisplay.textContent = formatTime(Math.floor(totalSecondes / 60), totalSecondes % 60);
 
@@ -36,6 +43,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     // gestion du bouton demarrer
     startButton.addEventListener('click', function() {
+        titleDisplay.textContent = "Phase de travail";
+
+        setTimeout(function() {
+            titleDisplay.classList.remove('highlight');
+        }, 2000); // 2000 ms 
         if (isPaused) {
             // Récupérer les valeurs
             let minutesInput = parseInt(document.getElementById('minutes').value) || 0;
@@ -43,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Pour le premier démarrage
             if (!totalSecondes) {
+                titleDisplay.classList.add('highlight');
                 totalSecondes = (minutesInput * 60) + secondsInput;
                 if (totalSecondes == 0) {
                     totalSecondes = (25 * 60); // 25min par défaut
@@ -52,12 +65,12 @@ document.addEventListener('DOMContentLoaded', function() {
             // afficher la durée
             timerDisplay.textContent = formatTime(Math.floor(totalSecondes / 60), totalSecondes % 60);
 
-            // Démarrer ou stopper le minuteur principal
+            //demarrer ou stopper le minuteur principal
             countdown = setInterval(function() {
                 if (totalSecondes <= 0) {
                     clearInterval(countdown);
                     timerDisplay.textContent = "Temps écoulé !";
-                    timerPause(); // Lancer le timer de pause de 5 minutes après la fin du premier
+                    timerPause(); //Lancer le timer de pause de 5 minutes après la fin du premier
                 } else {
                     totalSecondes--;
 
@@ -82,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // bouton reinitialiser
     clearButton.addEventListener('click', function() {
+        titleDisplay.textContent = "Pomodoro";
         clearInterval(countdown); 
         totalSecondes = null;
         timerDisplay.textContent = "25:00"; 
@@ -90,4 +104,5 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('secondes').value = ''; 
         isPaused = true; 
     });
+    
 });
