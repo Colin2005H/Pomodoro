@@ -16,14 +16,26 @@
 
 <h2 id="timer">25:00</h2>
 
-<div class="divinput">
-    <input type="number" id="minutes" min="0" placeholder="25">
-    <input type="number" id="secondes" min="0" placeholder="00">
+<div class="divinput" id="configuration" style="display: none;">
+    <div id="travail">
+        <label for="travail">Travail</label></br>
+        <input type="number" id="minutes" min="0" placeholder="25">
+        <input type="number" id="secondes" min="0" placeholder="00">
+    </div>
+    <div id="pause">
+        <label for="pause">Pause</label></br>
+        <input type="number" id="minutesPause" min="0" placeholder="25">
+        <input type="number" id="secondesPause" min="0" placeholder="00">
+    </div>
 </div>
 
-<div class="controls">
+<div class="controls" id ="controls">
     <button id="startButton">Lancer</button>
     <button id="clearButton">Réinitialiser</button>
+</div>
+
+<div class="settings" id ="settings"></div>
+    <button id="showButton">Configurer le timer</button>
 </div>
 
 

@@ -21,13 +21,14 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(function() {
             titleDisplay.classList.remove('highlight');
         }, 2000); // 2000 ms 
-        totalSecondes = 5 * 60; // 5 minutes de pause
+        totalSecondes = 5*60; // 5 minutes de pause
         timerDisplay.textContent = formatTime(Math.floor(totalSecondes / 60), totalSecondes % 60);
 
         countdown = setInterval(function() {
             if (totalSecondes <= 0) {
                 clearInterval(countdown);
                 timerDisplay.textContent = "Fin de la pause !";
+                titleDisplay.textContent = "Pomodoro";
                 startButton.textContent = "Démarrer"; 
                 totalSecondes = null; // reinitialiser le temps restant
             } else {
@@ -69,8 +70,8 @@ document.addEventListener('DOMContentLoaded', function() {
             countdown = setInterval(function() {
                 if (totalSecondes <= 0) {
                     clearInterval(countdown);
-                    timerDisplay.textContent = "Temps écoulé !";
                     timerPause(); //Lancer le timer de pause de 5 minutes après la fin du premier
+                    
                 } else {
                     totalSecondes--;
 
@@ -106,3 +107,48 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    let showButton = document.getElementById('showButton');
+    let configuration = document.getElementById('configuration');
+
+    showButton.addEventListener('click', function() {
+        if (configuration.style.display === "none") {
+            configuration.style.display = "flex"; 
+        } else {
+            configuration.style.display = "none";
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    let showButton = document.getElementById('showButton');
+    let title = document.getElementById('title');
+
+    showButton.addEventListener('click', function() {
+        if (title.style.display === "none") {
+            title.style.display = "flex"; 
+        } else {
+            title.style.display = "none";
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    let showButton = document.getElementById('showButton');
+    let timer = document.getElementById('timer');
+    let controls = document.getElementById('controls');
+
+    showButton.addEventListener('click', function() {
+        if (timer.style.display === "none") {
+            timer.style.display = "flex";
+            controls.style.display = "flex";
+
+        } else {
+            timer.style.display = "none";
+            controls.style.display = "none";
+
+        }
+    });
+});
+

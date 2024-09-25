@@ -16,12 +16,12 @@ body {
 
 h1 {
     font-size: 4vw;
+    display: flex;
 }
 
 #title.highlight {
     animation: highlight 2s ease-in-out;
 }
-
 
 
 h2 {
@@ -39,12 +39,11 @@ h2 {
     box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.5); 
 }
 
-
 .divinput {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 4vw; /*espace entre les inputs*/
+    gap: 4vw; 
     margin-top: 2vw;
 }
 
