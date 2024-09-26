@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let countdown; 
     let totalSecondes; // Temps restant pour le minuteur principal
     let isPaused = true; // Marche ou pause
-    let audio = new Audio(".mp3");
     
 
     // Fonction pour un affichage clair
