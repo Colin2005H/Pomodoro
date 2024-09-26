@@ -14,6 +14,10 @@ document.addEventListener('DOMContentLoaded', function() {
         return String(minutes).padStart(2, '0') + ":" + String(secondes).padStart(2, '0');
     }
 
+    function formatTime(minutesPause, secondesPause) {
+        return String(minutesPause).padStart(2, '0') + ":" + String(secondesPause).padStart(2, '0');
+    }
+
     // Fonction pour démarrer le timer de pause
     function timerPause() {
         titleDisplay.textContent = "Pause";
@@ -21,7 +25,11 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(function() {
             titleDisplay.classList.remove('highlight');
         }, 2000); // 2000 ms 
-        totalSecondes = 5*60; // 5 minutes de pause
+
+        let minutesInput = parseInt(document.getElementById('minutesPause').value) || 0;
+        let secondsInput = parseInt(document.getElementById('secondesPause').value) || 0;
+        
+        totalSecondes = totalSecondes = (minutesInput * 60) + secondsInput;
         timerDisplay.textContent = formatTime(Math.floor(totalSecondes / 60), totalSecondes % 60);
 
         countdown = setInterval(function() {
