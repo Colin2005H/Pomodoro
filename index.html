@@ -6,29 +6,37 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Barcode+128+Text&display=swap" rel="stylesheet">
+
     <link href="styles.css" type="text/css" rel="stylesheet" >
     <title>Pomodoro</title>
 </head>
 <body>
-    
-<div class="settings" id ="settings"></div>
+
 
 <h1 id="title">Pomodoro</h1>
-    <h2 id="timer">25:00</h2>
-    <i class="fa-solid fa-gear" id ="showButton"></i>
-</div>
+<h2 id="timer">25:00</h2>
+
+<i class="fa-solid fa-gear" id ="showButton"></i>
+
+
 
 <div class="divinput" id="configuration" style="display: none;">
     <div id="travail">
-        <label for="travail">Travail</label></br>
-        <input type="number" id="minutes" min="0" placeholder="25">
-        <input type="number" id="secondes" min="0" placeholder="00">
+        <label for="travail">Travail</label><br>
+        <input type="number" id="minutes" min="0" placeholder="25" autocomplete="off">
+        <input type="number" id="secondes" min="0" placeholder="00" autocomplete="off">
     </div>
     <div id="pause">
-        <label for="pause">Pause</label></br>
+        <label for="pause">Pause</label><br>
         <input type="number" id="minutesPause" min="0" placeholder="25">
         <input type="number" id="secondesPause" min="0" placeholder="00">
     </div>
+    
+    
 </div>
 
 <div class="controls" id ="controls">
@@ -40,6 +48,6 @@
 
 
 <script src="script.js"></script>
-<script src="https://kit.fontawesome.com/04e34c72ac.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/04e34c72ac.js"></script>
 </body>
 </html>

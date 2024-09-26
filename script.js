@@ -1,8 +1,10 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     let timerDisplay = document.getElementById('timer');
     let titleDisplay = document.getElementById('title');
     let startButton = document.getElementById('startButton');
     let clearButton = document.getElementById('clearButton');
+    let display = document.getElementById('display');
     let countdown; 
     let totalSecondes; // Temps restant pour le minuteur principal
     let isPaused = true; // Marche ou pause
@@ -26,10 +28,13 @@ document.addEventListener('DOMContentLoaded', function() {
             titleDisplay.classList.remove('highlight');
         }, 2000); // 2000 ms 
 
-        let minutesInput = parseInt(document.getElementById('minutesPause').value) || 0;
-        let secondsInput = parseInt(document.getElementById('secondesPause').value) || 0;
+        let minutesPauseInput = parseInt(document.getElementById('minutesPause').value) || 0;
+        let secondesPauseInput = parseInt(document.getElementById('secondesPause').value) || 0;
         
-        totalSecondes = totalSecondes = (minutesInput * 60) + secondsInput;
+        totalSecondes = (minutesPauseInput * 60) + secondesPauseInput;
+        if (totalSecondes == 0) {
+            totalSecondes = (5 * 60); // 25min par défaut
+        }
         timerDisplay.textContent = formatTime(Math.floor(totalSecondes / 60), totalSecondes % 60);
 
         countdown = setInterval(function() {
@@ -38,6 +43,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 timerDisplay.textContent = "Fin de la pause !";
                 titleDisplay.textContent = "Pomodoro";
                 startButton.textContent = "Démarrer"; 
+                let timer = document.getElementById('timer');
+                timer.style.animation = "none";
                 totalSecondes = null; // reinitialiser le temps restant
             } else {
                 totalSecondes--;
@@ -51,8 +58,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     }
     // gestion du bouton demarrer
+
     startButton.addEventListener('click', function() {
         titleDisplay.textContent = "Phase de travail";
+        
+        let timer = document.getElementById('timer');
+        timer.style.animation = "float 2s ease-in-out infinite";
 
         setTimeout(function() {
             titleDisplay.classList.remove('highlight');
@@ -90,8 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     timerDisplay.textContent = formatTime(minutesRestantes, secondesRestantes);
                 }
             }, 1000);
-
-            startButton.textContent = "Pause"; 
+            startButton.textContent = "Suspendre"; 
             isPaused = false; 
 
         } else {
@@ -115,6 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
 });
+
 
 document.addEventListener('DOMContentLoaded', function() {
     let showButton = document.getElementById('showButton');
@@ -159,4 +170,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
 
