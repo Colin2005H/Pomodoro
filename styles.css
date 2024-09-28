@@ -38,6 +38,7 @@ h2 {
 /*bouton d'affichage des paramètres */
 #showButton {
     margin-top: 2vw;
+    margin-top: 1vw;
     cursor: pointer;
     font-size: 5vw;
 }
@@ -62,6 +63,7 @@ h2 {
     align-items: center;
     gap: 3vw;
     margin-top: 2vw;
+    padding: 2vw;
 }
 
 /* Style pour les champs d'entrée */
@@ -192,6 +194,19 @@ button:hover, input[type="number"]:hover {
         flex-direction: column;
         gap: 3vw;
     }
+
+    label {
+        font-size: 2vw; 
+        margin-bottom: 0.5vw;
+        display: block; 
+    }
+
+    #showButton {
+        margin-top: 2vw;
+        margin-top: 1vw;
+        cursor: pointer;
+        font-size: 7vw;
+    }
 }
 
 /* responsiveness pour les très petits écrans (moins de 480px) */
@@ -214,6 +229,19 @@ button:hover, input[type="number"]:hover {
     .divinput, .controls {
         flex-direction: column;
         gap: 2vw;
+    }
+
+    label {
+        font-size: 2vw; 
+        margin-bottom: 0.5vw;
+        display: block; 
+    }
+    
+    #showButton {
+        margin-top: 2vw;
+        margin-top: 1vw;
+        cursor: pointer;
+        font-size: 7vw;
     }
 }
 
