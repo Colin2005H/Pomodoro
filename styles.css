@@ -1,9 +1,7 @@
-
 body {
     font-family: "Julius Sans One", sans-serif;
     font-weight: 400;
     text-align: center;
-    font-size: 4vw;
     color: #ffffff;
     background-color: #8b0a1b;
     min-height: 100vh;
@@ -14,109 +12,97 @@ body {
     padding: 0;
     margin: 0;
     animation: fadein 1s ease-in-out;
-    
-}
-
-header{
-    display: flex;
 }
 
 h1 {
     font-size: 4vw;
-    display: flex;
     font-family: "Julius Sans One", sans-serif;
-    
-    
-}
-
-#title.highlight {
-    animation: highlight 2s ease-in-out;
+    max-width: 90vw;
 }
 
 
 h2 {
-    width: 25vw; 
-    height: 25vw; 
-    border-radius: 100%; 
-    color: white; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    margin: 1vw auto; 
-    font-size: 4vw; 
+    width: 25vw;
+    height: 25vw;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1vw auto;
+    font-size: 4vw;
     font-family: "Julius Sans One", sans-serif;
     border: 0.5vw solid white;
 }
 
-#showButton{
-    margin: 0;
+/*bouton d'affichage des paramètres */
+#showButton {
     margin-top: 2vw;
+    cursor: pointer;
+    font-size: 5vw;
 }
 
-#showButton:hover{
-    animation: rotation 1s;
-
+#showButton:hover {
+    animation: rotation 1s ease-in-out;
 }
 
+/*configuration du temps*/
 .divinput {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 4vw; 
+    gap: 4vw;
     margin-top: 2vw;
 }
 
+/*boutons de contrôle */
 .controls {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 3vw; 
+    gap: 3vw;
     margin-top: 2vw;
 }
 
+/* Style pour les champs d'entrée */
 input[type="number"] {
-    width: 9vw; 
+    width: 9vw;
     height: 5vw;
     font-size: 5vw;
     padding: 1.5vw;
+    margin-right: 0.5vw;
+    margin-left: 0.5vw;
     text-align: center;
     border: 2px solid white;
     color: black;
     border-radius: 0.2em;
     font-family: "Julius Sans One", sans-serif;
-    
+    background-color: white;
+}
+
+label {
+    font-size: 2vw; 
+    margin-bottom: 0.5vw;
+    display: block; 
 }
 
 button {
-    font-size: 1vw;
+    font-size: 2vw;
     color: black;
     background-color: white;
     border: 2px solid white;
-    border-radius: 0.1em;
+    border-radius: 0.2em;
     cursor: pointer;
-    margin: 2vw;
-    padding: 1vw;
+    padding: 1vw 2vw;
     font-family: "Julius Sans One", sans-serif;
-    
-}
-
-#startButton, #clearButton{
-    font-size: 2vw;
-}
-
-.settings{
-    display: flex;
-    padding: 2vw;
-    
 }
 
 
 button:hover, input[type="number"]:hover {
-    animation: fadein1 0.2s ease-in-out;
-    animation-fill-mode: forwards;
+    animation: fadein1 0.2s ease-in-out forwards;
 }
 
-
+/* Animation pour la transition de fond */
 @keyframes fadein {
     0% {
         opacity: 0;
@@ -124,10 +110,11 @@ button:hover, input[type="number"]:hover {
     }
     100% {
         opacity: 1;
-        background-color:#8b0a1b;
+        background-color: #8b0a1b;
     }
 }
 
+/* Animation pour les boutons */
 @keyframes fadein1 {
     0% {
         background-color: white;
@@ -139,18 +126,7 @@ button:hover, input[type="number"]:hover {
     }
 }
 
-/*@keyframes highlight {
-    0% {
-        font-size: 4vw;
-    }
-    50% {
-        font-size: 5vw;
-    }
-    100% {
-        font-size: 4vw;
-    }
-}
-*/
+/*Animation du timer au demarrage*/
 @keyframes borderAnimationStart {
     0% {
         -webkit-box-shadow: none; 
@@ -167,6 +143,8 @@ button:hover, input[type="number"]:hover {
     }
 }
 
+
+/*Animation du timer à la fin*/
 @keyframes borderAnimationEnd {
     0% {
         -webkit-box-shadow: 0px 0px 50px -2px #FFFFFF; 
@@ -183,20 +161,17 @@ button:hover, input[type="number"]:hover {
     }
 }
 
+/* Animation de rotation pour l'engrennage */
 @keyframes rotation {
     0% {
-    transform: rotateZ(0deg);
+        transform: rotate(0deg);
     }
-    0% {
-    transform: rotateZ(45deg);
-        }
-    0% {
-    transform: rotateZ(90deg);
-        }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
-
-/* media queries pour les petits écrans*/
+/*Responsiveness pour les petits écrans*/
 @media (max-width: 768px) {
     h1 {
         font-size: 6vw;
@@ -213,7 +188,49 @@ button:hover, input[type="number"]:hover {
         padding: 3vw;
     }
 
-    .input-container {
-        gap: 2vw; /*ajuster l'écart entre les inputs sur petits écrans */
+    .divinput, .controls {
+        flex-direction: column;
+        gap: 3vw;
+    }
+}
+
+/* responsiveness pour les très petits écrans (moins de 480px) */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 8vw;
+    }
+
+    h2 {
+        width: 50vw;
+        height: 50vw;
+        font-size: 8vw;
+    }
+
+    input[type="number"], button {
+        font-size: 7vw;
+        padding: 4vw;
+    }
+
+    .divinput, .controls {
+        flex-direction: column;
+        gap: 2vw;
+    }
+}
+
+/* responsiveness pour les grands écrans (plus de 1920px) */
+@media (min-width: 1920px) {
+    h1 {
+        font-size: 3vw;
+    }
+
+    h2 {
+        width: 20vw;
+        height: 20vw;
+        font-size: 3vw;
+    }
+
+    input[type="number"], button {
+        font-size: 2vw;
+        padding: 1vw;
     }
 }
