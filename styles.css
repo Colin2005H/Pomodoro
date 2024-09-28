@@ -4,7 +4,7 @@ body {
     font-weight: 400;
     text-align: center;
     font-size: 4vw;
-    color: white;
+    color: #ffffff;
     background-color: #8b0a1b;
     min-height: 100vh;
     display: flex;
@@ -45,9 +45,7 @@ h2 {
     margin: 1vw auto; 
     font-size: 4vw; 
     font-family: "Julius Sans One", sans-serif;
-    border: 5px solid white;
-    box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.5); 
-    
+    border: 0.5vw solid white;
 }
 
 #showButton{
@@ -141,7 +139,7 @@ button:hover, input[type="number"]:hover {
     }
 }
 
-@keyframes highlight {
+/*@keyframes highlight {
     0% {
         font-size: 4vw;
     }
@@ -152,21 +150,36 @@ button:hover, input[type="number"]:hover {
         font-size: 4vw;
     }
 }
-
-@keyframes float {
+*/
+@keyframes borderAnimationStart {
     0% {
-        width: 25vw; 
-        height: 25vw; 
+        -webkit-box-shadow: none; 
+        box-shadow: none;
     }
     50% {
       
-        width: 26vw; 
-        height: 26vw; 
+        -webkit-box-shadow: 0px 0px 50px -2px #FFFFFF; 
+        box-shadow: 0px 0px 50px -2px #FFFFFF;
     }
     100% {
+        -webkit-box-shadow: 0px 0px 50px -2px #FFFFFF; 
+        box-shadow: 0px 0px 50px -2px #FFFFFF;
+    }
+}
+
+@keyframes borderAnimationEnd {
+    0% {
+        -webkit-box-shadow: 0px 0px 50px -2px #FFFFFF; 
+        box-shadow: 0px 0px 50px -2px #FFFFFF;
+    }
+    50% {
       
-        width: 25vw; 
-        height: 25vw; 
+        -webkit-box-shadow: 0px 0px 50px -2px #FFFFFF; 
+        box-shadow: 0px 0px 50px -2px #FFFFFF;
+    }
+    100% {
+        -webkit-box-shadow: none; 
+        box-shadow: none;
     }
 }
 
@@ -183,4 +196,24 @@ button:hover, input[type="number"]:hover {
 }
 
 
+/* media queries pour les petits écrans*/
+@media (max-width: 768px) {
+    h1 {
+        font-size: 6vw;
+    }
 
+    h2 {
+        width: 40vw;
+        height: 40vw;
+        font-size: 6vw;
+    }
+
+    input[type="number"], button {
+        font-size: 6vw;
+        padding: 3vw;
+    }
+
+    .input-container {
+        gap: 2vw; /*ajuster l'écart entre les inputs sur petits écrans */
+    }
+}
