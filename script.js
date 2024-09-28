@@ -6,11 +6,32 @@ document.addEventListener('DOMContentLoaded', function() {
     let showButton = document.getElementById('showButton');
     let configuration = document.getElementById('configuration');
     let controls = document.getElementById('controls');
-    
+    var startSound = new Audio("Sounds/StartSound.mp3");
+    var endSound = new Audio("Sounds/endSound.mp3");
     let countdown; 
     let totalSecondes; // Temps restant pour le minuteur principal
     let isPaused = true; //marche ou pause
     let isWorkPhase = true; // Savoir si c'est la phase de travail ou de pause
+
+    function changementTitre(newTitle) {
+        let titleDisplay = document.getElementById('title');
+        
+        titleDisplay.classList.add('slide-out');
+        
+        setTimeout(function() {
+            titleDisplay.textContent = newTitle; 
+            
+            
+            titleDisplay.classList.remove('slide-out');
+            titleDisplay.classList.add('slide-in');
+            
+            
+            setTimeout(function() {
+                titleDisplay.classList.remove('slide-in');
+            }, 500); 
+            
+        }, 500); 
+    }
 
     // Fonction pour un affichage clair
     function formatTime(minutes, secondes) {
@@ -19,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Fonction pour démarrer le timer de pause
     function timerPause() {
-        titleDisplay.textContent = "Pause";
+        changementTitre("Pause");
         let timer = document.getElementById('timer');
         timer.style.animation = "borderAnimationEnd 2s ease-in-out forwards";
         
@@ -58,7 +79,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Fonction pour démarrer le timer de travail
     function startWorkTimer() {
-        titleDisplay.textContent = "Phase de travail";
+        startSound.play();
+        changementTitre("Phase de travail");
         let timer = document.getElementById('timer');
         timer.style.animation = "borderAnimationStart 2s ease-in-out forwards";
         let minutesInput = parseInt(document.getElementById('minutes').value) || 0;
@@ -80,6 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
         countdown = setInterval(function() {
             if (totalSecondes <= 0) {
                 clearInterval(countdown);
+                endSound.play();
                 timerPause(); // Lancer le timer de pause après la fin du travail
                 isWorkPhase = false; // Marquer que la phase de travail est terminée
             } else {
@@ -125,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
     clearButton.addEventListener('click', function() {
         let timer = document.getElementById('timer');
         timer.style.animation = "borderAnimationEnd 2s ease-in-out forwards";
-        titleDisplay.textContent = "Pomodoro";
+        changementTitre("Pomodoro");
         clearInterval(countdown); 
         totalSecondes = null;
         timerDisplay.textContent = "25:00"; 
@@ -160,5 +183,18 @@ document.addEventListener('DOMContentLoaded', function() {
             timerDisplay.style.display = "none";
             controls.style.display = "none";
         }
+
+        let timer = document.getElementById('timer');
+        let minutesInput = parseInt(document.getElementById('minutes').value) || 0;
+        let secondsInput = parseInt(document.getElementById('secondes').value) || 0;
+        totalSecondes = (minutesInput * 60) + secondsInput;
+        timerDisplay.textContent = formatTime(Math.floor(totalSecondes / 60), totalSecondes % 60);
+        startButton.textContent = "Démarrer"; 
+        clearInterval(countdown); 
+        totalSecondes = null;
+        isPaused = true; 
+        isWorkPhase = true;
+        
+
     });
 });

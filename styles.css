@@ -173,6 +173,41 @@ button:hover, input[type="number"]:hover {
     }
 }
 
+/* Animation de slide-in */
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Animation de slide-out */
+@keyframes slideOut {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* aniamtion arrivée texte */
+.slide-in {
+    animation: slideIn 0.5s ease-in-out forwards;
+}
+
+/* aniamtion départ texte */
+.slide-out {
+    animation: slideOut 0.5s ease-in-out forwards;
+}
+
+
 /*Responsiveness pour les petits écrans*/
 @media (max-width: 768px) {
     h1 {
