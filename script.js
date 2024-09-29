@@ -72,14 +72,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
         timerDisplay.textContent = formatTime(Math.floor(totalSecondes / 60), totalSecondes % 60);
 
-        var outSound = new Audio("Sounds/endSound.mp3");
+        
 
         countdown = setInterval(function() {
             if (totalSecondes <= 0) {
                 clearInterval(countdown);
                 timerPause();
                 isWorkPhase = false;
-                outSound.play();
+                
                 changementTitre("Pause");
             } else {
                 totalSecondes--;
