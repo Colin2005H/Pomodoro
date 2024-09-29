@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let configuration = document.getElementById('configuration');
     let controls = document.getElementById('controls');
     var startSound = new Audio("Sounds/StartSound.mp3");
-    var endSound = new Audio("Sounds/endSound.mp3");
+    
     let countdown;
     let totalSecondes = null;
     let isWorkPhase = true;
@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 clearInterval(countdown);
                 timerPause();
                 isWorkPhase = false;
+                var endSound = new Audio("Sounds/endSound.mp3");
                 endSound.play();
                 changementTitre("Pause");
             } else {
