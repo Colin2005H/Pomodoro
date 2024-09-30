@@ -1,300 +1,305 @@
+html {
+  animation: fadein 1s ease-in-out;
+}
+
 body {
-    font-family: "Julius Sans One", sans-serif;
-    font-weight: 400;
-    text-align: center;
-    color: #ffffff;
-    background-color: #8b0a1b;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    margin: 0;
-    animation: fadein 1s ease-in-out;
+  font-family: "Julius Sans One", sans-serif;
+  font-weight: 400;
+  text-align: center;
+  color: #ffffff;
+  background-color: #8b0a1b;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
 }
 
 h1 {
-    font-size: 4vw;
-    font-family: "Julius Sans One", sans-serif;
-    max-width: 90vw;
+  font-size: 4vw;
+  font-family: "Julius Sans One", sans-serif;
+  max-width: 90vw;
 }
 
-
 h2 {
-    width: 25vw;
-    height: 25vw;
-    border-radius: 50%;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1vw auto;
-    font-size: 4vw;
-    font-family: "Julius Sans One", sans-serif;
-    border: 0.5vw solid white;
+  width: 25vw;
+  height: 25vw;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1vw auto;
+  font-size: 4vw;
+  font-family: "Julius Sans One", sans-serif;
+  border: 0.5vw solid white;
 }
 
 /*bouton d'affichage des paramètres */
 #showButton {
-    margin-top: 2vw;
-    margin-top: 1vw;
-    cursor: pointer;
-    font-size: 5vw;
+  margin-top: 2vw;
+  margin-top: 1vw;
+  cursor: pointer;
+  font-size: 5vw;
+  background-color: #8b0a1b;
+  border: none;
+  color: white;
 }
 
 #showButton:hover {
-    animation: rotation 1s ease-in-out;
+  animation: rotation 1s ease-in-out;
 }
 
 /*configuration du temps*/
 .divinput {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 4vw;
-    margin-top: 2vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4vw;
+  margin-top: 2vw;
 }
 
 /*boutons de contrôle */
 .controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 3vw;
-    margin-top: 2vw;
-    padding: 2vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3vw;
+  margin-top: 2vw;
+  padding: 2vw;
 }
 
 /* Style pour les champs d'entrée */
 input[type="number"] {
-    width: 9vw;
-    height: 5vw;
-    font-size: 5vw;
-    padding: 1.5vw;
-    margin-right: 0.5vw;
-    margin-left: 0.5vw;
-    text-align: center;
-    border: 2px solid white;
-    color: black;
-    border-radius: 0.2em;
-    font-family: "Julius Sans One", sans-serif;
-    background-color: white;
+  width: 9vw;
+  height: 5vw;
+  font-size: 5vw;
+  padding: 1.5vw;
+  margin-right: 0.5vw;
+  margin-left: 0.5vw;
+  text-align: center;
+  border: 2px solid white;
+  color: black;
+  border-radius: 0.2em;
+  font-family: "Julius Sans One", sans-serif;
+  background-color: white;
 }
 
 label {
-    font-size: 2vw; 
-    margin-bottom: 0.5vw;
-    display: block; 
+  font-size: 2vw;
+  margin-bottom: 0.5vw;
+  display: block;
 }
 
 button {
-    font-size: 2vw;
-    color: black;
-    background-color: white;
-    border: 2px solid white;
-    border-radius: 0.2em;
-    cursor: pointer;
-    padding: 1vw 2vw;
-    font-family: "Julius Sans One", sans-serif;
+  font-size: 2vw;
+  color: black;
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 0.2em;
+  cursor: pointer;
+  padding: 1vw 2vw;
+  font-family: "Julius Sans One", sans-serif;
 }
 
-
-button:hover, input[type="number"]:hover {
-    animation: fadein1 0.2s ease-in-out forwards;
+button:hover,
+input[type="number"]:hover {
+  animation: fadein1 0.2s ease-in-out forwards;
 }
 
 /* Animation pour la transition de fond */
 @keyframes fadein {
-    0% {
-        opacity: 0;
-        background-color: black;
-    }
-    100% {
-        opacity: 1;
-        background-color: #8b0a1b;
-    }
+  0% {
+    opacity: 0;
+    background-color: black;
+  }
+  100% {
+    opacity: 1;
+    background-color: #8b0a1b;
+  }
 }
 
 /* Animation pour les boutons */
 @keyframes fadein1 {
-    0% {
-        background-color: white;
-        color: black;
-    }
-    100% {
-        background-color: rgb(199, 1, 26);
-        color: white;
-    }
+  0% {
+    background-color: white;
+    color: black;
+  }
+  100% {
+    background-color: rgb(199, 1, 26);
+    color: white;
+  }
 }
 
 /*Animation du timer au demarrage*/
 @keyframes borderAnimationStart {
-    0% {
-        -webkit-box-shadow: none; 
-        box-shadow: none;
-    }
-    50% {
-      
-        -webkit-box-shadow: 0px 0px 50px -2px #FFFFFF; 
-        box-shadow: 0px 0px 50px -2px #FFFFFF;
-    }
-    100% {
-        -webkit-box-shadow: 0px 0px 50px -2px #FFFFFF; 
-        box-shadow: 0px 0px 50px -2px #FFFFFF;
-    }
+  0% {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  50% {
+    -webkit-box-shadow: 0px 0px 50px -2px #ffffff;
+    box-shadow: 0px 0px 50px -2px #ffffff;
+  }
+  100% {
+    -webkit-box-shadow: 0px 0px 50px -2px #ffffff;
+    box-shadow: 0px 0px 50px -2px #ffffff;
+  }
 }
-
 
 /*Animation du timer à la fin*/
 @keyframes borderAnimationEnd {
-    0% {
-        -webkit-box-shadow: 0px 0px 50px -2px #FFFFFF; 
-        box-shadow: 0px 0px 50px -2px #FFFFFF;
-    }
-    50% {
-      
-        -webkit-box-shadow: 0px 0px 50px -2px #FFFFFF; 
-        box-shadow: 0px 0px 50px -2px #FFFFFF;
-    }
-    100% {
-        -webkit-box-shadow: none; 
-        box-shadow: none;
-    }
+  0% {
+    -webkit-box-shadow: 0px 0px 50px -2px #ffffff;
+    box-shadow: 0px 0px 50px -2px #ffffff;
+  }
+  50% {
+    -webkit-box-shadow: 0px 0px 50px -2px #ffffff;
+    box-shadow: 0px 0px 50px -2px #ffffff;
+  }
+  100% {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
 }
 
 /* Animation de rotation pour l'engrennage */
 @keyframes rotation {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Animation de slide-in */
 @keyframes slideIn {
-    0% {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
-
 
 /* Animation de slide-out */
 @keyframes slideOut {
-    0% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
 }
 
 /* aniamtion arrivée texte */
 .slide-in {
-    animation: slideIn 0.5s ease-in-out forwards;
+  animation: slideIn 0.5s ease-in-out forwards;
 }
 
 /* aniamtion départ texte */
 .slide-out {
-    animation: slideOut 0.5s ease-in-out forwards;
+  animation: slideOut 0.5s ease-in-out forwards;
 }
-
 
 /*Responsiveness pour les petits écrans*/
 @media (max-width: 768px) {
-    h1 {
-        font-size: 6vw;
-    }
+  h1 {
+    font-size: 6vw;
+  }
 
-    h2 {
-        width: 40vw;
-        height: 40vw;
-        font-size: 6vw;
-    }
+  h2 {
+    width: 40vw;
+    height: 40vw;
+    font-size: 6vw;
+  }
 
-    input[type="number"], button {
-        font-size: 6vw;
-        padding: 3vw;
-    }
+  input[type="number"],
+  button {
+    font-size: 6vw;
+    padding: 3vw;
+  }
 
-    .divinput, .controls {
-        flex-direction: column;
-        gap: 3vw;
-    }
+  .divinput,
+  .controls {
+    flex-direction: column;
+    gap: 3vw;
+  }
 
-    label {
-        font-size: 2vw; 
-        margin-bottom: 0.5vw;
-        display: block; 
-    }
+  label {
+    font-size: 2vw;
+    margin-bottom: 0.5vw;
+    display: block;
+  }
 
-    #showButton {
-        margin-top: 2vw;
-        margin-top: 1vw;
-        cursor: pointer;
-        font-size: 7vw;
-    }
+  #showButton {
+    margin-top: 2vw;
+    margin-top: 1vw;
+    cursor: pointer;
+    font-size: 7vw;
+  }
 }
 
 /* responsiveness pour les très petits écrans (moins de 480px) */
 @media (max-width: 480px) {
-    h1 {
-        font-size: 8vw;
-    }
+  h1 {
+    font-size: 8vw;
+  }
 
-    h2 {
-        width: 50vw;
-        height: 50vw;
-        font-size: 8vw;
-    }
+  h2 {
+    width: 50vw;
+    height: 50vw;
+    font-size: 8vw;
+  }
 
-    input[type="number"], button {
-        font-size: 7vw;
-        padding: 4vw;
-    }
+  input[type="number"],
+  button {
+    font-size: 7vw;
+    padding: 4vw;
+  }
 
-    .divinput, .controls {
-        flex-direction: column;
-        gap: 2vw;
-    }
+  .divinput,
+  .controls {
+    flex-direction: column;
+    gap: 2vw;
+  }
 
-    label {
-        font-size: 2vw; 
-        margin-bottom: 0.5vw;
-        display: block; 
-    }
-    
-    #showButton {
-        margin-top: 2vw;
-        margin-top: 1vw;
-        cursor: pointer;
-        font-size: 7vw;
-    }
+  label {
+    font-size: 2vw;
+    margin-bottom: 0.5vw;
+    display: block;
+  }
+
+  #showButton {
+    margin-top: 2vw;
+    margin-top: 1vw;
+    cursor: pointer;
+    font-size: 7vw;
+  }
 }
 
 /* responsiveness pour les grands écrans (plus de 1920px) */
 @media (min-width: 1920px) {
-    h1 {
-        font-size: 3vw;
-    }
+  h1 {
+    font-size: 3vw;
+  }
 
-    h2 {
-        width: 20vw;
-        height: 20vw;
-        font-size: 3vw;
-    }
+  h2 {
+    width: 20vw;
+    height: 20vw;
+    font-size: 3vw;
+  }
 
-    input[type="number"], button {
-        font-size: 2vw;
-        padding: 1vw;
-    }
+  input[type="number"],
+  button {
+    font-size: 2vw;
+    padding: 1vw;
+  }
 }
