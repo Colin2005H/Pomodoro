@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let timerDisplay = document.getElementById("timer");
+  let timerDisplay = document.getElementById("timer"); //récupération de l'élément "timer" dans le html
   let titleDisplay = document.getElementById("title");
   let startButton = document.getElementById("startButton");
   let showButton = document.getElementById("showButton");
@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const chime = new Audio("Sounds/chime.mp3");
 
   let countdown;
-  let totalSecondes = null;
-  let isWorkPhase = true;
+  let totalSecondes = null; //variable qui stocke le temps total en seconde
+  let isWorkPhase = true; //session de travail lancée ou non
 
   // charger les valeurs de temps de l'utilisateur enregistées en local
   function loadFormValues() {
@@ -44,17 +44,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // changer le texte du titre en fonction de la phase du timer
   function titleSwap(newTitle) {
-    titleDisplay.classList.add("slide-out");
+    titleDisplay.classList.add("slide-out"); //faire disparaitre le titre avec  l'animation "slide-out"
     setTimeout(function () {
       titleDisplay.textContent = newTitle;
-      titleDisplay.classList.remove("slide-out");
+      titleDisplay.classList.remove("slide-out"); //stopper l'animation
       titleDisplay.classList.add("slide-in");
       setTimeout(function () {
         titleDisplay.classList.remove("slide-in");
-      }, 500);
+      }, 500); //durée de 0.5s
     }, 500);
   }
-
+  //transforme le temps en chaine de caractère pour ensuite l'afficher et ajoute un 0 si necessaire pour rendre l'affichage agréable
   function formatTime(minutes, secondes) {
     return (
       String(minutes).padStart(2, "0") + ":" + String(secondes).padStart(2, "0")
@@ -67,10 +67,10 @@ document.addEventListener("DOMContentLoaded", function () {
       parseInt(document.getElementById("minutesPause").value) || 0;
     let secondesPauseInput =
       parseInt(document.getElementById("secondesPause").value) || 0;
-    chime.play();
+    chime.play(); //joue le son de fin session de travil et de début de pause
     totalSecondes = minutesPauseInput * 60 + secondesPauseInput;
     if (totalSecondes == 0) {
-      totalSecondes = 5 * 60;
+      totalSecondes = 5 * 60; //si aucune valeur de temps de pause est précisée le temps par défaut est 5min
     }
     timerDisplay.textContent = formatTime(
       Math.floor(totalSecondes / 60),
@@ -94,11 +94,11 @@ document.addEventListener("DOMContentLoaded", function () {
           secondesRestantes
         );
       }
-    }, 1000);
+    }, 1000); //rafraichissement toutes les secondes
   }
   // gestion du minuteur de travail
   function startWorkTimer() {
-    startSound.play();
+    startSound.play(); //son de démarrage
     titleSwap("Phase de travail");
     let minutesInput = parseInt(document.getElementById("minutes").value) || 0;
     let secondsInput = parseInt(document.getElementById("secondes").value) || 0;
@@ -107,12 +107,12 @@ document.addEventListener("DOMContentLoaded", function () {
       totalSecondes = minutesInput * 60 + secondsInput;
 
       if (totalSecondes == 0) {
-        totalSecondes = 25 * 60;
+        totalSecondes = 25 * 60; //25min par défaut pour la phase de travail
       }
     }
 
     timerDisplay.style.animation =
-      "borderAnimationStart 2s ease-in-out forwards";
+      "borderAnimationStart 2s ease-in-out forwards"; //aniamtion des ombres de la bordure du timer
 
     timerDisplay.textContent = formatTime(
       Math.floor(totalSecondes / 60),
@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
       alert("Entrez un temps de pause inférieur à 1H");
     } else {
       configuration.style.display =
-        configuration.style.display === "none" ? "flex" : "none";
+        configuration.style.display === "none" ? "flex" : "none"; //si le menu de configuration n'est pas affiché alors il s'affiche sinon, il disparait
       titleDisplay.style.display =
         titleDisplay.style.display === "none" ? "flex" : "none";
       timerDisplay.style.display =
