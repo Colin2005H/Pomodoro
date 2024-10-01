@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let secondesPauseInput =
       parseInt(document.getElementById("secondesPause").value) || 0;
     chime.play(); //joue le son de fin session de travil et de début de pause
-    totalSecondes = minutesPauseInput * 60 + secondesPauseInput;
+    totalSecondes = Math.abs(minutesPauseInput * 60 + secondesPauseInput);
     if (totalSecondes == 0) {
       totalSecondes = 5 * 60; //si aucune valeur de temps de pause est précisée le temps par défaut est 5min
     }
@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let secondsInput = parseInt(document.getElementById("secondes").value) || 0;
 
     if (totalSecondes === null) {
-      totalSecondes = minutesInput * 60 + secondsInput;
+      totalSecondes = Math.abs(minutesInput * 60 + secondsInput);
 
       if (totalSecondes == 0) {
         totalSecondes = 25 * 60; //25min par défaut pour la phase de travail
@@ -165,6 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // affichage du menu de configuration
+  
   showButton.addEventListener("click", function () {
     loadFormValues();
     let minutesInput = parseInt(document.getElementById("minutes").value) || 0;
@@ -174,12 +175,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let secondesPauseInput =
       parseInt(document.getElementById("secondesPause").value) || 0;
 
-    let totalSecondesPause = minutesPauseInput * 60 + secondesPauseInput;
-    totalSecondes = minutesInput * 60 + secondsInput;
+    let totalSecondesPause = Math.abs(minutesPauseInput * 60 + secondesPauseInput);
+    totalSecondes = Math.abs(minutesInput * 60 + secondsInput);
     if (totalSecondes > 7200) {
-      alert("Entrez un temps de travail inférieur à 2H");
+      alert("Entrez un temps de travail supérieur à 1sec et inférieur à 2H");
     } else if (totalSecondesPause > 3600) {
-      alert("Entrez un temps de pause inférieur à 1H");
+      alert("Entrez un temps de pause supérieur à 1sec et inférieur à 1H");
     } else {
       configuration.style.display =
         configuration.style.display === "none" ? "flex" : "none"; //si le menu de configuration n'est pas affiché alors il s'affiche sinon, il disparait
