@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+  //attendre que le DOM soit chargé pour exécuter le code
   let timerDisplay = document.getElementById("timer"); //récupération de l'élément "timer" dans le html
   let titleDisplay = document.getElementById("title");
   let startButton = document.getElementById("startButton");
@@ -68,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let secondesPauseInput =
       parseInt(document.getElementById("secondesPause").value) || 0;
     chime.play(); //joue le son de fin session de travil et de début de pause
-    totalSecondes = Math.abs(minutesPauseInput * 60 + secondesPauseInput);
+    totalSecondes = Math.abs(minutesPauseInput * 60 + secondesPauseInput); //conversion des minutes et secondes en secondes
     if (totalSecondes == 0) {
       totalSecondes = 5 * 60; //si aucune valeur de temps de pause est précisée le temps par défaut est 5min
     }
@@ -131,13 +132,14 @@ document.addEventListener("DOMContentLoaded", function () {
         let minutesRestantes = Math.floor(totalSecondes / 60);
         let secondesRestantes = totalSecondes % 60;
         timerDisplay.textContent = formatTime(
+          //affichage du temps restant
           minutesRestantes,
           secondesRestantes
         );
       }
     }, 1000);
   }
-  // gestion du changement entre le minuteur de travail et de pause
+  //gestion du changement entre le minuteur de travail et de pause
   function startTimer() {
     if (isWorkPhase) {
       startWorkTimer();
@@ -147,6 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   // bouton pour lancer ou réinitialiser le minuteur
   startButton.addEventListener("click", function () {
+    //ajout d'un écouteur d'évènement sur le bouton de démarrage
     if (totalSecondes === null) {
       startTimer();
       startButton.textContent = "Réinitialiser";
@@ -154,18 +157,19 @@ document.addEventListener("DOMContentLoaded", function () {
       titleSwap("Pomodoro");
       clearInterval(countdown);
       totalSecondes = null;
+      timerDisplay.textContent = "00:00";
       startButton.textContent = "Lancer";
       document.getElementById("minutes").value = "";
       document.getElementById("secondes").value = "";
       isWorkPhase = true;
 
       timerDisplay.style.animation =
-        "borderAnimationEnd 2s ease-in-out forwards";
+        "borderAnimationEnd 2s ease-in-out forwards"; //aniamtion des ombres de la bordure du timer
     }
   });
 
   // affichage du menu de configuration
-  
+
   showButton.addEventListener("click", function () {
     loadFormValues();
     let minutesInput = parseInt(document.getElementById("minutes").value) || 0;
@@ -175,7 +179,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let secondesPauseInput =
       parseInt(document.getElementById("secondesPause").value) || 0;
 
-    let totalSecondesPause = Math.abs(minutesPauseInput * 60 + secondesPauseInput);
+    let totalSecondesPause = Math.abs(
+      minutesPauseInput * 60 + secondesPauseInput
+    );
     totalSecondes = Math.abs(minutesInput * 60 + secondsInput);
     if (totalSecondes > 7200) {
       alert("Entrez un temps de travail supérieur à 1sec et inférieur à 2H");
