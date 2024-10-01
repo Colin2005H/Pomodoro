@@ -18,7 +18,7 @@ body {
 }
 
 h1 {
-  font-size: 4vw;
+  font-size: 5vw;
   font-family: "Julius Sans One", sans-serif;
   max-width: 90vw;
 }
@@ -35,21 +35,22 @@ h2 {
   font-size: 4vw;
   font-family: "Julius Sans One", sans-serif;
   border: 0.5vw solid white;
+  animation: timer_animation 0.5s ease-in-out forwards;
 }
 
-/*bouton d'affichage des paramètres */
 #showButton {
   margin-top: 2vw;
   margin-top: 1vw;
   cursor: pointer;
-  font-size: 5vw;
-  background-color: #8b0a1b;
+  font-size: 3vw;
   border: none;
   color: white;
 }
 
 #showButton:hover {
   animation: rotation 1s ease-in-out;
+  margin-top: 2vw;
+  margin-top: 1vw;
 }
 
 /*configuration du temps*/
@@ -75,7 +76,7 @@ h2 {
 input[type="number"] {
   width: 9vw;
   height: 5vw;
-  font-size: 5vw;
+  font-size: 4vw;
   padding: 1.5vw;
   margin-right: 0.5vw;
   margin-left: 0.5vw;
@@ -162,6 +163,23 @@ input[type="number"]:hover {
   100% {
     -webkit-box-shadow: none;
     box-shadow: none;
+  }
+}
+
+@keyframes timer_animation {
+  0% {
+    transform: rotate(360deg);
+    width: 0;
+    height: 0;
+    font-size: 0;
+    border: 0vw solid white;
+  }
+  50% {
+    width: 0;
+    height: 0;
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }
 
@@ -279,7 +297,6 @@ input[type="number"]:hover {
 
   #showButton {
     margin-top: 2vw;
-    margin-top: 1vw;
     cursor: pointer;
     font-size: 7vw;
   }

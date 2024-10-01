@@ -12,7 +12,38 @@ document.addEventListener("DOMContentLoaded", function () {
   let totalSecondes = null;
   let isWorkPhase = true;
 
-  function changementTitre(newTitle) {
+  // charger les valeurs de temps de l'utilisateur enregistées en local
+  function loadFormValues() {
+    const minutes = localStorage.getItem("minutes");
+    const secondes = localStorage.getItem("secondes");
+    const minutesPause = localStorage.getItem("minutesPause");
+    const secondesPause = localStorage.getItem("secondesPause");
+
+    if (minutes !== null) document.getElementById("minutes").value = minutes;
+    if (secondes !== null) document.getElementById("secondes").value = secondes;
+    if (minutesPause !== null)
+      document.getElementById("minutesPause").value = minutesPause;
+    if (secondesPause !== null)
+      document.getElementById("secondesPause").value = secondesPause;
+  }
+
+  // enregistrer en local les valeurs saisies dans formulaire
+  function saveFormValues() {
+    const minutes = document.getElementById("minutes").value;
+    const secondes = document.getElementById("secondes").value;
+    const minutesPause = document.getElementById("minutesPause").value;
+    const secondesPause = document.getElementById("secondesPause").value;
+
+    localStorage.setItem("minutes", minutes);
+    localStorage.setItem("secondes", secondes);
+    localStorage.setItem("minutesPause", minutesPause);
+    localStorage.setItem("secondesPause", secondesPause);
+  }
+
+  loadFormValues();
+
+  // changer le texte du titre en fonction de la phase du timer
+  function titleSwap(newTitle) {
     titleDisplay.classList.add("slide-out");
     setTimeout(function () {
       titleDisplay.textContent = newTitle;
@@ -30,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   }
 
+  // gestion du minuteur de pause
   function timerPause() {
     let minutesPauseInput =
       parseInt(document.getElementById("minutesPause").value) || 0;
@@ -49,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (totalSecondes <= 0) {
         clearInterval(countdown);
         timerDisplay.textContent = "Fin de la pause !";
-        changementTitre("Pomodoro");
+        titleSwap("Pomodoro");
         totalSecondes = null;
         isWorkPhase = true;
         startTimer();
@@ -64,10 +96,10 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }, 1000);
   }
-
+  // gestion du minuteur de travail
   function startWorkTimer() {
     startSound.play();
-    changementTitre("Phase de travail");
+    titleSwap("Phase de travail");
     let minutesInput = parseInt(document.getElementById("minutes").value) || 0;
     let secondsInput = parseInt(document.getElementById("secondes").value) || 0;
 
@@ -93,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
         timerPause();
         isWorkPhase = false;
 
-        changementTitre("Pause");
+        titleSwap("Pause");
       } else {
         totalSecondes--;
         let minutesRestantes = Math.floor(totalSecondes / 60);
@@ -105,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }, 1000);
   }
-
+  // gestion du changement entre le minuteur de travail et de pause
   function startTimer() {
     if (isWorkPhase) {
       startWorkTimer();
@@ -113,22 +145,20 @@ document.addEventListener("DOMContentLoaded", function () {
       timerPause();
     }
   }
-
+  // bouton pour lancer ou réinitialiser le minuteur
   startButton.addEventListener("click", function () {
     if (totalSecondes === null) {
       startTimer();
       startButton.textContent = "Réinitialiser";
     } else {
-      changementTitre("Pomodoro");
+      titleSwap("Pomodoro");
       clearInterval(countdown);
       totalSecondes = null;
-      timerDisplay.textContent = "25:00";
-      startButton.textContent = "Démarrer";
+      startButton.textContent = "Lancer";
       document.getElementById("minutes").value = "";
       document.getElementById("secondes").value = "";
       isWorkPhase = true;
 
-      // Réinitialiser l'animation
       timerDisplay.style.animation =
         "borderAnimationEnd 2s ease-in-out forwards";
     }
@@ -136,6 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // affichage du menu de configuration
   showButton.addEventListener("click", function () {
+    loadFormValues();
     let minutesInput = parseInt(document.getElementById("minutes").value) || 0;
     let secondsInput = parseInt(document.getElementById("secondes").value) || 0;
     let minutesPauseInput =
@@ -162,10 +193,20 @@ document.addEventListener("DOMContentLoaded", function () {
         Math.floor(totalSecondes / 60),
         totalSecondes % 60
       );
-      startButton.textContent = "Démarrer";
+      startButton.textContent = "Lancer";
       clearInterval(countdown);
       totalSecondes = null;
       isWorkPhase = true;
     }
   });
+
+  // mettre à jour les données entrées dans le formulaire à chaque modification
+  document.getElementById("minutes").addEventListener("input", saveFormValues);
+  document.getElementById("secondes").addEventListener("input", saveFormValues);
+  document
+    .getElementById("minutesPause")
+    .addEventListener("input", saveFormValues);
+  document
+    .getElementById("secondesPause")
+    .addEventListener("input", saveFormValues);
 });
